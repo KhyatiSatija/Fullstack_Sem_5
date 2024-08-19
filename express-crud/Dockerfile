@@ -44,8 +44,15 @@ EXPOSE 3000
 #port
 
 # This is an executable command which runs on the run time (not the compile time)
-CMD [ "node", "server.js" ] 
+# CMD [ "node", "server.js" ] 
 # terminal par bhi tou aese run karte hain right -> 'node server.js' karke
 # this command will run the container
 
 # this will execute on the runtime
+
+
+# CMD ["nodemon", "server.js"]
+#to automatically restart the server whenever any file changes are made.
+
+
+CMD ["npm", "start"]
