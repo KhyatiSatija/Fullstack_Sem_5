@@ -1,5 +1,6 @@
 FROM node:18.6
 # THis is installed in the base image (not local machine)
+# fetch node js image from the docker hub
 
 
 # if we dont mention version, then latest version is installed
@@ -40,8 +41,14 @@ RUN npm install
 
 # uper ke saare commands will execute on the compile time.
 
-EXPOSE 3000
+# EXPOSE 3000
 #port
+
+ENV PORT=3000
+# setting up the environment variable
+EXPOSE ${PORT}
+# ${varaible_name}
+# we can change on runtime, which port we want to pass(kis port par forwarding karni hain)
 
 # This is an executable command which runs on the run time (not the compile time)
 # CMD [ "node", "server.js" ] 
@@ -56,3 +63,4 @@ EXPOSE 3000
 
 
 CMD ["npm", "start"]
+

@@ -1,0 +1,18 @@
+version: '3'
+# can start with any version 1 or 2 or 3. latest version of compose file is 3
+services:
+  node-app: #taken as image name
+    build: .
+    ports:
+      - "3000:4000"
+    volumes:
+      - ./:/app #since pwd (./) with Docker /app directory
+      - /app/node_modules
+    environment:
+      - PORT=3000
+    env_file:
+      - ./.env
+# node-app is the image name and build: . comes from docker build -t image_name . 
+
+# docker run -v ${pwd}:/app:ro -v /app/node_modules  --env-file ./.env -p 3000:4000 -d --name express-container express-crud-image
+# this file is helping us to break this command into pieces
