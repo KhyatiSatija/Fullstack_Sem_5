@@ -41,7 +41,7 @@ COPY . /app/
 
 ARG NODE_ENV
 #we are receiving NODE_ENV as an argument over here and we have defined it in the docker-compose files of the dev and prod environments
-RUN if [ "${NODE_ENV}"= "development"]; \
+RUN if [ "${NODE_ENV}" = "development" ]; \
 then npm install; \
 else npm install --only=production; \
 fi
