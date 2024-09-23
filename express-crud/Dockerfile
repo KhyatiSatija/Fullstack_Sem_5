@@ -32,14 +32,25 @@ COPY . /app/
 
 
 # install all dependencies into the docker directory
-RUN npm install 
+# RUN npm install 
 # This is a compile time command (it executes when the image is being built)
 # It will install all the dependencies from the package.json file in the docker directory
 
 # CONCLUSION : 
 # we have two machine - local machine and docker ki virtual environment, we have to set up everything from local to virtual machine. 
 
+ARG NODE_ENV
+#we are receiving NODE_ENV as an argument over here and we have defined it in the docker-compose files of the dev and prod environments
+RUN if [ "${NODE_ENV}"= "development"]; \
+then npm install; \
+else npm install --only=production; \
+fi
+
 # uper ke saare commands will execute on the compile time.
+
+
+
+
 
 # EXPOSE 3000
 #port
@@ -51,7 +62,7 @@ EXPOSE ${PORT}
 # we can change on runtime, which port we want to pass(kis port par forwarding karni hain)
 
 # This is an executable command which runs on the run time (not the compile time)
-# CMD [ "node", "server.js" ] 
+CMD [ "node", "server.js" ] 
 # terminal par bhi tou aese run karte hain right -> 'node server.js' karke
 # this command will run the container
 
@@ -62,5 +73,5 @@ EXPOSE ${PORT}
 #to automatically restart the server whenever any file changes are made.
 
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
 
