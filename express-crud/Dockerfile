@@ -49,9 +49,6 @@ fi
 # uper ke saare commands will execute on the compile time.
 
 
-
-
-
 # EXPOSE 3000
 #port
 

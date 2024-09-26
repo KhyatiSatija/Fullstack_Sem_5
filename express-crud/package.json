@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.21.0",
     "express-crud": "file:",
     "mongoose": "^8.6.3"

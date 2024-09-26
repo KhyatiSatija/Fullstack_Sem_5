@@ -47,7 +47,8 @@ exports.createTask = async (req, res, next) => {
         })
     } catch(e) {
         res.status(400).json({
-            status: "Failed to create task"
+            status: "Failed to create task",
+            message: e.message
         })
     }
 }
